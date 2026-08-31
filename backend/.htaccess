@@ -1,0 +1,13 @@
+# backend/.htaccess
+# Direct all virtual paths to index.php for clean REST URLs on Apache servers.
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Stop processing if request matches actual existing file or folder
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Redirect everything else to index.php
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
